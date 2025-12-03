@@ -25,6 +25,7 @@
 ;;; Code:
 
 (require 'cl-lib)
+(require 'seq)
 
 (defun osf-regexp-literal-any-case (literal-str)
   "Returns a regexp that matches LITERAL-STR literally and case insensitively."

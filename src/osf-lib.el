@@ -281,4 +281,36 @@ be a symbol.)"
       (setq kill-ring new-kill-ring))
     new-kill-ring))
 
+(defun osf-kill-invisible-dired-buffers ()
+  (interactive)
+  (let* ((invisible-dired-buffers
+         (seq-filter
+          (lambda (buf)
+            (with-current-buffer buf
+              (and (eq major-mode 'dired-mode)
+                   (not (get-buffer-window buf 'visible)))))
+          (buffer-list)))
+        (killed-paths
+         (mapcar
+          (lambda (buf)
+            (with-current-buffer buf
+              (if (consp dired-directory)
+                  (car dired-directory)
+                dired-directory)))
+          invisible-dired-buffers))
+        (killed-buffer-names (mapcar #'buffer-name invisible-dired-buffers)))
+      (dolist (buf invisible-dired-buffers)
+        (kill-buffer buf))
+      (if killed-buffer-names
+          (let ((result-buffer (get-buffer-create "*Killed Dired Buffers*")))
+            (with-current-buffer result-buffer
+              (erase-buffer)
+              (insert "Killed dired buffers:\n\n")
+              (dolist (path killed-paths)
+                (insert path "\n"))
+              (goto-char (point-min))
+              (view-mode 1))
+            (pop-to-buffer result-buffer))
+        (message "There are not invisible dired Buffers"))))
+
 (provide 'osf-lib)
