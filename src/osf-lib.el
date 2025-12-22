@@ -297,11 +297,10 @@ be a symbol.)"
               (if (consp dired-directory)
                   (car dired-directory)
                 dired-directory)))
-          invisible-dired-buffers))
-        (killed-buffer-names (mapcar #'buffer-name invisible-dired-buffers)))
+          invisible-dired-buffers)))
       (dolist (buf invisible-dired-buffers)
         (kill-buffer buf))
-      (if killed-buffer-names
+      (if killed-paths
           (let ((result-buffer (get-buffer-create "*Killed Dired Buffers*")))
             (with-current-buffer result-buffer
               (erase-buffer)
