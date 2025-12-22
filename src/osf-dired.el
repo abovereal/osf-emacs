@@ -59,7 +59,6 @@
   (require 'dired-hacks-utils)
   (dired-utils-format-information-line-mode))
 
-(add-hook 'dired-mode-hook #'auto-revert-mode)
 (add-hook 'dired-mode-hook #'hl-line-mode)
 
 (provide 'osf-dired)
