@@ -47,4 +47,6 @@
 (osf-leader-define-key 'global
   "p" project-prefix-map)
 
+(setq project-vc-merge-submodules nil)
+
 (provide 'osf-project)
