@@ -77,7 +77,7 @@ Example:
   (interactive
    (list (read-string "Name: " nil 'osf-create-src-hist)))
   (let* ((feature (concat "osf-" basename))
-	 (filepath (expand-file-name (concat feature ".el") osf-src-dir)))
+     (filepath (expand-file-name (concat feature ".el") osf-src-dir)))
     (when (file-exists-p filepath)
       (user-error "File ~A already exists" filepath))
     (find-file filepath)
@@ -311,5 +311,39 @@ be a symbol.)"
               (view-mode 1))
             (pop-to-buffer result-buffer))
         (message "There are not invisible dired Buffers"))))
+
+(defun osf-reveal-current-file ()
+  (interactive)
+  (unless default-directory
+    (error "No `default-directory' to open"))
+  (let ((p (if (eq major-mode 'dired-mode)
+               (dired-get-file-for-visit)
+             (if buffer-file-name buffer-file-name default-directory))))
+    (cond ((eq osf-system-type 'windows)
+           (let* ((p (replace-regexp-in-string
+                      "/" "\\"
+                      (replace-regexp-in-string "\"" "" p)
+                      t t)))
+             (w32-shell-execute "open" "explorer" (concat "/e,/select," p))))
+          ((eq osf-system-type 'mac)
+           (do-applescript
+            (format "tell application \"Finder\" to reveal POSIX file \"%s\""
+                    (replace-regexp-in-string "\"" "\\\\\"" p)))
+           (do-applescript "tell application \"Finder\" to activate"))
+          ((eq osf-system-type 'linux)
+           (cond
+            ((executable-find "nautilus")
+             (call-process "nautilus" nil 0 nil "--select" p))
+            ((executable-find "dolphin")
+             (call-process "dolphin" nil 0 nil "--select" p))
+            ((executable-find "nemo")
+             (call-process "nemo" nil 0 nil "--no-desktop" p))
+            ((executable-find "thunar")
+             (call-process "thunar" nil 0 nil (file-name-directory p)
+                           "--select" p))
+            (t
+             (call-process "xdg-open" nil 0 nil (file-name-directory p)))))
+          (t
+           (error "Unknown system %s" osf-system-type)))))
 
 (provide 'osf-lib)

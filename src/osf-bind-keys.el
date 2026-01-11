@@ -35,6 +35,8 @@
   "b x" #'kill-current-buffer
   "b m" #'ibuffer
 
+  "d d" #'osf-reveal-current-file
+
   "B s" #'bookmark-set
   "B j" #'bookmark-jump
   "B r" #'bookmark-rename
