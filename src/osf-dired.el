@@ -61,4 +61,19 @@
 
 (add-hook 'dired-mode-hook #'hl-line-mode)
 
+(defun osf-dired-dnd-handle-local-file (uri action)
+  (if (yes-or-no-p "open if yes, drop if no ")
+      (dnd-open-local-file uri action)
+    (dired-dnd-handle-local-file uri action)))
+
+(defun osf-dired-dnd-handle-file (uri action)
+  (if (yes-or-no-p "open if yes, drop if no ")
+      (dnd-open-local-file uri action)
+    (dired-dnd-handle-file uri action)))
+
+(setq dired-dnd-protocol-alist
+      '(("^file:///" . osf-dired-dnd-handle-local-file)
+        ("^file://"  . osf-dired-dnd-handle-file)
+        ("^file:"    . osf-dired-dnd-handle-local-file)))
+
 (provide 'osf-dired)
