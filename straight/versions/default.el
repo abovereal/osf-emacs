@@ -1,6 +1,7 @@
 (("Emacs-wgrep" . "49f09ab9b706d2312cab1199e1eeb1bcd3f27f6f")
  ("PG" . "999cafbe7320ae887f7eebd441beab7e5b0ae6eb")
  ("ace-window" . "77115afc1b0b9f633084cf7479c767988106c196")
+ ("all-the-icons.el" . "4778632b29c8c8d2b7cd9ce69535d0be01d846f9")
  ("avy" . "933d1f36cca0f71e4acb5fac707e9ae26c536264")
  ("better-jumper" . "b1bf7a3c8cb820d942a0305e0e6412ef369f819c")
  ("blackout" . "7707211370f03f03a2f74df15f42ac24a1e99300")

@@ -62,4 +62,6 @@
                'modus-operandi)))
   (load-theme theme t))
 
+(straight-use-package 'all-the-icons)
+
 (provide 'osf-ui)
