@@ -64,4 +64,12 @@
 
 (straight-use-package 'all-the-icons)
 
+(when (eq osf-system-type 'windows)
+  (let ((symbol-font (font-spec :family "Segoe UI Symbol"))
+        (emoji-font (font-spec :family "Segoe UI Emoji")))
+    (when (find-font symbol-font)
+      (set-fontset-font t 'symbol symbol-font nil 'append))
+    (when (find-font emoji-font)
+      (set-fontset-font t 'emoji emoji-font nil 'append))))
+
 (provide 'osf-ui)
