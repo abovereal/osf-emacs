@@ -1,8 +1,8 @@
 ;;; -*- lexical-binding: t; -*-
 
-;; Copyright (c) 2023-2025 Zhexuan Chen <2915234902@qq.com>
+;; Copyright (c) 2023-2026 Chen Zhexuan
 
-;; Author: Zhexuan Chen <2915234902@qq.com>
+;; Author: Chen Zhexuan
 ;; URL: https://github.com/CloseToZero/osf-emacs
 
 ;; This file is NOT part of GNU Emacs.
