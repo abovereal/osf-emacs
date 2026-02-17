@@ -1,0 +1,13 @@
+fundamental-mode
+
+c-mode c++-mode
+
+(sc "static_cast")
+(dc "dynamic_cast")
+(rc "reinterpret_cast")
+(cc "const_cast")
+
+;; Local Variables:
+;; mode: lisp-data
+;; outline-regexp: "[a-z]"
+;; End:

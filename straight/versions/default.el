@@ -84,6 +84,7 @@
  ("straight.el" . "b7da472452615dc44b4ce76c64a059d6db3b7017")
  ("string-inflection" . "99607eb77702953c7715ec2ba5a6a840b9bea62b")
  ("tablist" . "fcd37147121fabdf003a70279cf86fbe08cfac6f")
+ ("tempel" . "8d9a1646fb4014a5d34f3f19b7c894310f06a1e8")
  ("tomelr" . "ff34a7d9a68d0f25718a8a4e0fd9c6a73e506cdb")
  ("transient" . "49bbb29fd34b807948d4f2b91f61587c12a595f0")
  ("vertico" . "d8dc49a3520ab908c2b0f62a4a8ae32ca23f2726")

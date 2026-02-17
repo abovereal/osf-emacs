@@ -287,4 +287,13 @@ but use `default-directory' if not in minibuffer."
 (osf-keymap-global-set
   "M-v" #'osf-switch-to-completions-or-scroll-down)
 
+(straight-use-package 'tempel)
+
+(osf-keymap-global-set
+  "M-i" #'tempel-expand
+  "M-*" #'tempel-insert)
+(osf-evil-define-key '(normal insert) 'global
+  "M-i" #'tempel-expand
+  "M-*" #'tempel-insert)
+
 (provide 'osf-completion)
